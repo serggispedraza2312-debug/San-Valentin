@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>¿Quieres ser mi San Valentín? ❤️</title>
+  <meta name="description" content="Una pregunta importante 💘" />
+
+  <!-- Preview bonito en WhatsApp/Redes (cambia la imagen por la tuya) -->
+  <meta property="og:title" content="¿Quieres ser mi San Valentín? ❤️" />
+  <meta property="og:description" content="Prometo hacerte muy feliz siempre 💖" />
+  <meta property="og:type" content="website" />
+  <!-- Después te explico cómo poner aquí una imagen real pública -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=1200" />
+
+  <style>
+    :root{ --card:#ffffff; --bg1:#ffd1dc; --bg2:#ffeef2; }
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+      padding: 18px;
+    }
+    .card{
+      width:min(420px, 100%);
+      background:var(--card);
+      border-radius:22px;
+      padding:18px 18px 22px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.12);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .media{
+      width: 220px; height: 220px;
+      margin: 6px auto 10px;
+      border-radius:18px;
+      background:#f6f6f6;
+      display:grid; place-items:center;
+      overflow:hidden;
+    }
+    .media img{ width:100%; height:100%; object-fit:cover; display:block; }
+    h1{ margin: 6px 0 6px; font-size: 26px; color:#d81b60; }
+    p{ margin: 0 0 14px; color:#444; }
+    .btns{ display:flex; gap:12px; justify-content:center; margin-top:10px; }
+    button{
+      border:0; padding:12px 22px; border-radius:999px;
+      font-weight:700; font-size:16px; cursor:pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,.12);
+      transition: transform .08s ease;
+    }
+    button:active{ transform: translateY(1px) scale(.99); }
+    #yes{ background:#ff3b7a; color:white; }
+    #no{ background:#cfd8dc; color:#222; position:relative; }
+    .ok{
+      display:none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #e8fff0;
+      color: #1b5e20;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="media">
+      <!-- Cambia el src por el gatito o tu imagen favorita -->
+      <img src="gato.jpg" />
+    </div>
+
+    <h1>¿Quieres ser mi San Valentín? 🥺👉👈</h1>
+    <p>Prometo hacerte muy feliz ❤️</p>
+
+    <div class="btns">
+      <button id="yes">Sí 😍</button>
+      <button id="no">No 😶</button>
+    </div>
+
+    <div class="ok" id="okMsg">¡Te amo Cielito bello 💖✨</div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+    const okMsg = document.getElementById('okMsg');
+
+    function moveNo(){
+      const card = document.querySelector('.card');
+      const rect = card.getBoundingClientRect();
+      const x = Math.random() * (rect.width - noBtn.offsetWidth - 30) + 15;
+      const y = Math.random() * (rect.height - noBtn.offsetHeight - 30) + 15;
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+
+    noBtn.addEventListener('mouseenter', moveNo);
+    noBtn.addEventListener('touchstart', (e)=>{ e.preventDefault(); moveNo(); }, {passive:false});
+
+    yesBtn.addEventListener('click', ()=>{
+      okMsg.style.display = 'block';
+      noBtn.style.display = 'none';
+      yesBtn.textContent = '💘 Confirmado 💘';
+    });
+  </script>
+</body>
+</html>
